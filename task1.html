@@ -1,0 +1,26 @@
+
+<html>
+  <head>
+    <title>Assessment 6</title>
+    <script>
+      function reverse() {
+        var input = document.getElementById("input_field").value;
+        var reversed = input.split('').reverse().join('');
+        document.getElementById("output_field").value = reversed;
+      }
+    </script>
+  </head>
+<body>
+
+
+  <h2>Task 1: reverse string</h2>
+
+  <p>Input: <input type="text" id="input_field"></p>
+  <p>Output: <input type="text" id="output_field"></p>
+
+  <button onclick="reverse()">Reverse</button>
+
+
+
+</body>
+</html>

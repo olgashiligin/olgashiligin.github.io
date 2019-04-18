@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Task2</title>
+		    <script src="https://d3js.org/d3.v4.min.js"></script>
+        <script type="text/javascript">
+
+								function getMeasurements(presidents){
+									var name = document.getElementById("name").value;
+									var measurements = [];
+									for (i=0;i<presidents.length;i++){
+										var row = presidents[i];
+										if(row.Name==name){
+											measurements = [row.Height,row.Weight];
+											break;
+										}
+									}
+									return measurements;
+								}
+
+								function showMeasurements() {
+									d3.csv("https://raw.githubusercontent.com/charleyferrari/CUNY_DATA_608/master/module6/data/presidents.csv",
+	            		                    function(presidents){
+	            		                       var inputs = getMeasurements(presidents);
+	            		                       document.getElementById("output_field").value = "Height: "+inputs[0]+", Weight: "+inputs[1]
+	            		                    });
+									
+								}
+
+     </script>
+	</head>
+
+	<body>
+	<h2>Task 2: Get presidents measures</h2>
+    <p>Name: <input type="text" id="name"></p>
+    <p>Measurements: <input type="text" id="output_field"></p>
+    <button onclick="showMeasurements()">get measurements</button>
+    <p></p>
+    <table id="presidents_table">
+    	<tr><td>Name</td><td>Height</td><td>Weight</td></tr>
+    </table>
+
+		<script src="https://d3js.org/d3.v4.min.js"></script>
+		<script type="text/javascript">
+
+				d3.csv("https://raw.githubusercontent.com/charleyferrari/CUNY_DATA_608/master/module6/data/presidents.csv",
+				function(prezs){
+					var table = document.getElementById("presidents_table");
+
+					for (i=1;i<prezs.length;i++){
+						var row_values = prezs[i];
+						var row = table.insertRow(i);
+						var nameCell = row.insertCell(0);
+						nameCell.innerHTML = row_values.Name;
+						var heightCell = row.insertCell(1);
+						heightCell.innerHTML = row_values.Height;
+						var weightCell = row.insertCell(2);
+						weightCell.innerHTML = row_values.Weight;
+
+
+					}
+				});
+
+
+  </script>
+	</body>
+
+</html>
