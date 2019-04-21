@@ -1,1 +1,41 @@
-<!DOCTYPE html><html>	<head>		<title>Multiples</title>		<script type="text/javascript">			function multiply(num){	 var nums = [];	 for(i = 1; i <= 20; i++){	   nums[i-1]=num*i	 }return nums;}function doTable(){	   	var numOfCols = 4;    var input = document.getElementById("input_field").value;    var multiples = multiply(input);    var table = document.getElementById("multipliers_table");         for (i=0;i<multiples.length;i=i+4){    	var row_values = multiples.slice(i,i+4);    	var row = table.insertRow(i/4);    	for(k=0;k<row_values.length;k++){    		var cell = row.insertCell(k);    		cell.innerHTML = row_values[k]    	}    	    }}    		</script>	</head>		<body>		<h2>Task 1: get mutiplication matrix</h2>			<p>Input: <input type="text" id="input_field"></p>		 <button onclick="doTable()">Multiply</button>		 <table id="multipliers_table"></table>	</body></html>
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Multiples</title>
+		<script type="text/javascript">
+			function multiply(num){
+	 var nums = [];
+	 for(i = 1; i <= 20; i++){
+	   nums[i-1]=num*i
+	 }
+return nums;
+}
+
+function doTable(){	
+   	var numOfCols = 4;
+    var input = document.getElementById("input_field").value;
+    if(input.length>0){
+	    var multiples = multiply(input);
+	    var table = document.getElementById("multipliers_table");
+	    table.innerHTML = "";
+	    for (i=0;i<multiples.length;i=i+4){
+	    	var row_values = multiples.slice(i,i+4);
+	    	var row = table.insertRow(i/4);
+	    	for(k=0;k<row_values.length;k++){
+	    		var cell = row.insertCell(k);
+	    		cell.innerHTML = row_values[k]
+	    	}
+	    	
+	    }    	
+	    }
+
+}    
+		</script>
+	</head>
+		<body>
+		<h2>Task 1: get mutiplication matrix</h2>	
+		<p>Input: <input type="text" id="input_field"></p>
+		 <button onclick="doTable()">Multiply</button>
+		 <table id="multipliers_table"></table>
+	</body>
+</html>
